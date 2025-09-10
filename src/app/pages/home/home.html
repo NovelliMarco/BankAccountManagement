@@ -63,11 +63,14 @@
       <div class="card shadow-sm">
         <div class="card-header">Lista Movimenti</div>
         <ul class="list-group list-group-flush">
-          <li *ngFor="let op of operazioni" class="list-group-item d-flex justify-content-between">
-            <span>{{ op.descrizione }}</span>
+          <li *ngFor="let op of operazioni" class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <span>{{ op.descrizione }}</span><br>
+              <small class="text-muted">{{ op.dataEmissione }}</small>
+            </div>
             <span [ngClass]="{ 'text-success': op.importo > 0, 'text-danger': op.importo < 0 }">
-              {{ op.importo | currency : 'EUR' }}
-            </span>
+            {{ op.importo | currency:'EUR' }}
+          </span>
           </li>
         </ul>
       </div>
