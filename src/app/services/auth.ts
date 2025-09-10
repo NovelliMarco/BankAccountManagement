@@ -9,8 +9,8 @@ export class Auth {
   constructor(private http: HttpClient) {}
 
   private readonly mockedUser: User = {
-    name: 'Mario',
-    surname: 'Rossi',
+    name: 'Marco',
+    surname: 'Novelli',
     cf: 'RSSMR01R10H101J',
     birthday: '2001-10-01',
     iban: 'IT29K0300203280656138636643',

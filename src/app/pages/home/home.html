@@ -10,12 +10,12 @@
           <div class="row text-center align-items-center">
             <div class="col-3">
               <h5 class="card-title">Saldo Disponibile</h5>
-              <p class="display-4 text-primary">{{ saldo | currency : 'EUR' }}</p>
+              <p class="display-5 text-primary m-0">{{ saldo | currency : 'EUR' }}</p>
             </div>
 
             <div class="col-3">
               <h5 class="card-title">Saldo Contabile</h5>
-              <p class="display-4">{{ saldo | currency : 'EUR' }}</p>
+              <p class="display-5 m-0">{{ saldo | currency : 'EUR' }}</p>
             </div>
 
             <div class="col-6 text-start border-start border-secondary">
@@ -70,6 +70,7 @@
         <ul class="list-group list-group-flush">
           <li *ngFor="let op of operazioni" class="list-group-item d-flex justify-content-between">
             <span>{{ op.descrizione }}</span>
+            <small class="text-muted">{{ op.dataEmissione }}</small>
             <span [ngClass]="{ 'text-success': op.importo > 0, 'text-danger': op.importo < 0 }">
               {{ op.importo | currency : 'EUR' }}
             </span>
