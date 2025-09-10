@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styleUrls: ['./navbar.scss'],
 })
 export class Navbar implements OnInit {
+  @Input() user!: User;
   isCollapsed = false;
 
   menuItems = [

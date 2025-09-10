@@ -1,9 +1,11 @@
-<div class="container mt-4">
+<div class="container">
   <!-- Saldo -->
   <div class="row">
     <div class="col-12">
       <div class="card mb-4 shadow-sm">
-        <div class="card-header">Ciao <b>Mario Rossi</b></div>
+        <div class="card-header">
+          Ciao <b>{{ user?.name }} {{ user?.surname }}</b>
+        </div>
         <div class="card-body">
           <div class="row text-center align-items-center">
             <div class="col-3">
@@ -18,7 +20,7 @@
 
             <div class="col-6 text-start border-start border-secondary">
               <h5 class="card-title">IBAN</h5>
-              <p class="display-6 m-0 text-secondary">IT29K0300203280656138636643</p>
+              <p class="display-6 m-0 text-secondary">{{ user?.iban }}</p>
             </div>
           </div>
         </div>
@@ -30,24 +32,29 @@
   <div class="row">
     <div class="col-12">
       <div class="card mb-4 shadow-sm">
-        <div class="card-header">Ricerca movimenti</div>
-        <div class="card-body">
-          <div class="row align-items-end">
-            <!-- Data Da -->
-            <div class="col-md-4">
-              <label for="startDate" class="form-label">Data da</label>
-              <input type="date" id="startDate" class="form-control" />
-            </div>
+        <div class="card-header" (click)="toggleFilters()">
+          <i class="fas" [ngClass]="showFilters ? 'fa-caret-down' : 'fa-caret-right'"></i> Ricerca
+          movimenti
+        </div>
+        <div class="collapsable" [class.show]="showFilters">
+          <div class="card-body">
+            <div class="row align-items-end">
+              <!-- Data Da -->
+              <div class="col-md-4">
+                <label for="startDate" class="form-label">Data da</label>
+                <input type="date" id="startDate" class="form-control" />
+              </div>
 
-            <!-- Data A -->
-            <div class="col-md-4">
-              <label for="endDate" class="form-label">Data a</label>
-              <input type="date" id="endDate" class="form-control" />
-            </div>
+              <!-- Data A -->
+              <div class="col-md-4">
+                <label for="endDate" class="form-label">Data a</label>
+                <input type="date" id="endDate" class="form-control" />
+              </div>
 
-            <!-- Pulsante Cerca -->
-            <div class="col-md-4">
-              <button class="btn btn-primary w-100">Cerca</button>
+              <!-- Pulsante Cerca -->
+              <div class="col-md-4">
+                <button class="btn btn-primary w-100">Cerca</button>
+              </div>
             </div>
           </div>
         </div>

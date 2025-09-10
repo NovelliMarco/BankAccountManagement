@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, effect, OnInit, untracked } from '@angular/core';
+import { Auth } from '../../services/auth';
+import { Router } from '@angular/router';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +10,7 @@ import { Component } from '@angular/core';
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })
-export class Home {
+export class Home implements OnInit {
   saldo = 1520.75;
 
   operazioni = [
@@ -16,4 +19,17 @@ export class Home {
     { descrizione: 'Bolletta luce', importo: -120.6 },
     { descrizione: 'Rimborso assicurazione', importo: 50.0 },
   ];
+
+  showFilters = false;
+  user!: User | null;
+
+  constructor(private authService: Auth, private router: Router) {
+    this.user = this.authService.loggedUser();
+  }
+
+  ngOnInit(): void {}
+
+  toggleFilters(): void {
+    this.showFilters = !this.showFilters;
+  }
 }

@@ -6,11 +6,15 @@ import {
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
+import { Auth } from './services/auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
+    provideHttpClient(),
+    Auth,
   ],
 };

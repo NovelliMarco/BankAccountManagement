@@ -4,8 +4,8 @@
     <!-- Header -->
     <div class="sidebar-header d-flex align-items-center justify-content-between p-3">
       <div class="brand d-flex align-items-center" *ngIf="!isCollapsed">
-        <i class="fas fa-rocket brand-icon me-2"></i>
-        <h5 class="brand-text mb-0">MyApp</h5>
+        <i class="fas fa-building-columns brand-icon me-2"></i>
+        <h5 class="brand-text mb-0">Bank</h5>
       </div>
       <button
         class="btn btn-outline-light btn-sm toggle-btn"
@@ -17,18 +17,14 @@
     </div>
 
     <!-- User Profile Section -->
-    <div class="user-profile p-3" *ngIf="!isCollapsed">
-      <div class="d-flex align-items-center">
-        <img
-          src="https://via.placeholder.com/40x40/007bff/ffffff?text=U"
-          alt="User Avatar"
-          class="rounded-circle me-3"
-          width="40"
-          height="40"
-        />
-        <div class="user-info">
-          <div class="user-name">Mario Rossi</div>
-          <div class="user-role text-muted">Administrator</div>
+    <div class="user-profile" *ngIf="!isCollapsed">
+      <div class="row align-items-center">
+        <div class="col-auto icon text-center align-content-center">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="col-auto user-info">
+          <h5 class="user-name m-0">{{ user.name }} {{ user.surname }}</h5>
+          <!-- <div class="user-role text-secondary">Administrator</div> -->
         </div>
       </div>
     </div>
@@ -54,7 +50,7 @@
     <!-- Footer -->
     <div class="sidebar-footer mt-auto p-3" *ngIf="!isCollapsed">
       <div class="d-flex justify-content-between align-items-center">
-        <small class="text-muted">Versione 1.0.0</small>
+        <small>Versione 1.0.0</small>
         <button class="btn btn-outline-light btn-sm" title="Logout">
           <i class="fas fa-sign-out-alt"></i>
         </button>

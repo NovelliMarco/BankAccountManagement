@@ -1,6 +1,6 @@
 <!-- app.component.html -->
-<div class="app-container">
-  <app-navbar></app-navbar>
+<div class="app-container" *ngIf="user">
+  <app-navbar [user]="user"></app-navbar>
 
   <main class="main-content">
     <div class="container-fluid p-4">
@@ -8,3 +8,8 @@
     </div>
   </main>
 </div>
+<main *ngIf="!user">
+  <div class="container-fluid p-4">
+    <router-outlet></router-outlet>
+  </div>
+</main>
