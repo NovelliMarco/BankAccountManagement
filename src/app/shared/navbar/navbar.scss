@@ -1,0 +1,263 @@
+@use 'variables' as *;
+
+// Sidebar Wrapper
+.sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: $sidebar-width;
+  z-index: 1000;
+  transition: width $transition-duration ease-in-out;
+
+  &.collapsed {
+    width: $sidebar-collapsed-width;
+
+    .sidebar {
+      .nav-text,
+      .submenu-arrow {
+        opacity: 0;
+      }
+
+      .submenu-wrapper {
+        display: none;
+      }
+    }
+  }
+}
+
+// Main Sidebar
+.sidebar {
+  height: 100%;
+  background: linear-gradient(180deg, $dark-bg 0%, $darker-bg 100%);
+  color: $text-light;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+// Header
+.sidebar-header {
+  background: $darker-bg;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 70px;
+
+  .brand {
+    .brand-icon {
+      font-size: 1.5rem;
+      color: $primary-color;
+    }
+
+    .brand-text {
+      font-weight: 600;
+      color: $text-light;
+    }
+  }
+
+  .toggle-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: $text-light;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// User Profile
+.user-profile {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  .user-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: $text-light;
+  }
+
+  .user-role {
+    font-size: 0.75rem;
+    color: $text-muted;
+  }
+}
+
+// Navigation
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem 0;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+
+  .nav-item {
+    margin-bottom: 0.25rem;
+  }
+
+  .nav-link {
+    color: $text-light;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      background: $hover-bg;
+      color: $text-light;
+      transform: translateX(2px);
+    }
+
+    &.active {
+      background: $active-bg;
+      color: $primary-color;
+      border-right: 3px solid $primary-color;
+
+      .nav-icon {
+        color: $primary-color;
+      }
+    }
+
+    .nav-icon {
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+      transition: color 0.2s ease;
+    }
+
+    .nav-text {
+      font-weight: 500;
+      transition: opacity $transition-duration ease;
+    }
+
+    .submenu-arrow {
+      font-size: 0.8rem;
+      transition: transform 0.2s ease, opacity $transition-duration ease;
+
+      &.rotated {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+// Submenu
+.submenu-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+
+  &.show {
+    max-height: 200px;
+  }
+}
+
+.submenu {
+  background: rgba(0, 0, 0, 0.2);
+
+  .submenu-link {
+    color: $text-muted;
+    padding: 0.5rem 1.5rem 0.5rem 3.5rem;
+    font-size: 0.875rem;
+
+    &:hover {
+      color: $text-light;
+      background: $hover-bg;
+      padding-left: 3.75rem;
+    }
+
+    &.active {
+      color: $primary-color;
+      background: $active-bg;
+    }
+  }
+}
+
+// Footer
+.sidebar-footer {
+  background: $darker-bg;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  .btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: $text-muted;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: $text-light;
+    }
+  }
+}
+
+// Overlay per mobile
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .sidebar-wrapper {
+    transform: translateX(-100%);
+    transition: transform $transition-duration ease-in-out;
+
+    &:not(.collapsed) {
+      transform: translateX(0);
+    }
+  }
+
+  .sidebar-overlay {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar-overlay {
+    display: none !important;
+  }
+}
+
+// Animazioni
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav-item {
+  animation: slideIn 0.3s ease forwards;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+}

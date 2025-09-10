@@ -1,0 +1,74 @@
+<div class="container mt-4">
+  <!-- Saldo -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">Ciao <b>Mario Rossi</b></div>
+        <div class="card-body">
+          <div class="row text-center align-items-center">
+            <div class="col-3">
+              <h5 class="card-title">Saldo Disponibile</h5>
+              <p class="display-4 text-primary">{{ saldo | currency : 'EUR' }}</p>
+            </div>
+
+            <div class="col-3">
+              <h5 class="card-title">Saldo Contabile</h5>
+              <p class="display-4">{{ saldo | currency : 'EUR' }}</p>
+            </div>
+
+            <div class="col-6 text-start border-start border-secondary">
+              <h5 class="card-title">IBAN</h5>
+              <p class="display-6 m-0 text-secondary">IT29K0300203280656138636643</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ricerca -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">Ricerca movimenti</div>
+        <div class="card-body">
+          <div class="row align-items-end">
+            <!-- Data Da -->
+            <div class="col-md-4">
+              <label for="startDate" class="form-label">Data da</label>
+              <input type="date" id="startDate" class="form-control" />
+            </div>
+
+            <!-- Data A -->
+            <div class="col-md-4">
+              <label for="endDate" class="form-label">Data a</label>
+              <input type="date" id="endDate" class="form-control" />
+            </div>
+
+            <!-- Pulsante Cerca -->
+            <div class="col-md-4">
+              <button class="btn btn-primary w-100">Cerca</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Movimenti -->
+  <div class="row">
+    <div class="mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header">Movimenti</div>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let op of operazioni" class="list-group-item d-flex justify-content-between">
+            <span>{{ op.descrizione }}</span>
+            <span [ngClass]="{ 'text-success': op.importo > 0, 'text-danger': op.importo < 0 }">
+              {{ op.importo | currency : 'EUR' }}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
