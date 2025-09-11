@@ -17,10 +17,10 @@ export class App implements OnInit {
   constructor(private authService: Auth, private router: Router) {}
 
   ngOnInit(): void {
-    this.authService.login().subscribe({
-      next: () => this.router.navigate(['/home']),
-      error: () => this.router.navigate(['/home']), // anche in caso di fallback
-    });
+    // this.authService.login().subscribe({
+    //   next: () => this.router.navigate(['/home']),
+    //   error: () => this.router.navigate(['/home']), // anche in caso di fallback
+    // });
   }
 
   private userEffect = effect(() => {

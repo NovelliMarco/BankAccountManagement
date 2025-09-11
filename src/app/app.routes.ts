@@ -1,8 +1,9 @@
-import { RouterOutlet, Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { CardDetail } from './pages/card-detail/card-detail';
-import { UserProfile } from './pages/user-profile/user-profile';
-import { Support } from './pages/support/support';
+import {RouterOutlet, Routes} from '@angular/router';
+import {Home} from './pages/home/home';
+import {CardDetail} from './pages/card-detail/card-detail';
+import {UserProfile} from './pages/user-profile/user-profile';
+import {Support} from './pages/support/support';
+import {Login} from './pages/login/login';
 
 const siteName: string = 'Bank ‣';
 
