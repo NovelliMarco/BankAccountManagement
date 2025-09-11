@@ -1,1 +1,160 @@
-<p>support works!</p>
+<div class="container my-5">
+  <h1 class="mb-4 text-primary">Supporto Clienti</h1>
+
+  <!-- FAQ Card -->
+  <div class="card p-4 mb-4 shadow-sm">
+    <h2 class="text-primary mb-3">FAQ</h2>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq1">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1"
+                  aria-expanded="true">
+            Come posso aprire un nuovo conto?
+          </button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Puoi aprire un nuovo conto direttamente recandoti in filiale.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2"
+                  aria-expanded="false">
+            Posso cercare una transazione ?
+          </button>
+        </h2>
+        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Andando nella sezione Home con il tab Ricerca Movimenti aggiungendo le date
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3"
+                  aria-expanded="false">
+            Posso modificare i miei dati personali?
+          </button>
+        </h2>
+        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Sì, vai su "Profilo" e aggiorna i tuoi dati direttamente dall'app.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contatti Card -->
+  <div class="card p-4 mb-4 shadow-sm">
+    <h2 class="text-primary mb-3">Contatti</h2>
+    <p><strong>Email:</strong> supporto@banca.com</p>
+    <p><strong>Telefono:</strong> 800-123-456</p>
+    <p><strong>Indirizzo:</strong> Via Roma 123, 00100 Roma, Italia</p>
+
+    <!-- Orari a griglia -->
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+      <div class="col">
+        <div class="border p-2 rounded d-flex justify-content-between align-items-center">
+          <span>Lunedì</span>
+          <small class="text-muted">09:00 - 18:00</small>
+        </div>
+      </div>
+      <div class="col">
+        <div class="border p-2 rounded d-flex justify-content-between align-items-center">
+          <span>Martedì</span>
+          <small class="text-muted">09:00 - 18:00</small>
+        </div>
+      </div>
+      <div class="col">
+        <div class="border p-2 rounded d-flex justify-content-between align-items-center">
+          <span>Mercoledì</span>
+          <small class="text-muted">09:00 - 18:00</small>
+        </div>
+      </div>
+      <div class="col">
+        <div class="border p-2 rounded d-flex justify-content-between align-items-center">
+          <span>Giovedì</span>
+          <small class="text-muted">09:00 - 18:00</small>
+        </div>
+      </div>
+      <div class="col">
+        <div class="border p-2 rounded d-flex justify-content-between align-items-center">
+          <span>Venerdì</span>
+          <small class="text-muted">09:00 - 18:00</small>
+        </div>
+      </div>
+      <div class="col">
+        <div class="border p-2 rounded d-flex justify-content-between align-items-center">
+          <span>Sabato</span>
+          <small class="text-muted">09:00 - 12:00</small>
+        </div>
+      </div>
+      <div class="col">
+        <div class="border p-2 rounded d-flex justify-content-between align-items-center">
+          <span>Domenica</span>
+          <small class="text-muted">09:00 - 12:00</small>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Google Maps Embed -->
+    <h5 class="text-primary mt-3 mb-2">Mappa</h5>
+    <div class="mt-3">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.123456789!2d12.496365115731234!3d41.9027832790216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f619b3fdd567f%3A0x123456789abcdef!2sVia%20Roma%20123%2C%20Roma!5e0!3m2!1sit!2sit!4v1690000000000!5m2!1sit!2sit"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Modulo Supporto Email Card -->
+  <div class="card p-4 mb-4 shadow-sm">
+    <h2 class="text-primary mb-3">Invia una richiesta</h2>
+    <form [formGroup]="supportForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" formControlName="nome">
+        <div *ngIf="submitted && supportForm.controls['nome'].invalid" class="text-danger">
+          Inserisci il tuo nome.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+        <div *ngIf="submitted && supportForm.controls['email'].invalid" class="text-danger">
+          Inserisci una email valida.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="oggetto" class="form-label">Oggetto</label>
+        <input type="oggetto" class="form-control" id="oggetto" formControlName="oggetto">
+        <div *ngIf="submitted && supportForm.controls['oggetto'].invalid" class="text-danger">
+          Inserisci una email valida.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="messaggio" class="form-label">Messaggio</label>
+        <textarea class="form-control" id="messaggio" rows="5" formControlName="messaggio"></textarea>
+        <div *ngIf="submitted && supportForm.controls['messaggio'].invalid" class="text-danger">
+          Scrivi un messaggio.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Invia</button>
+    </form>
+  </div>
+</div>
