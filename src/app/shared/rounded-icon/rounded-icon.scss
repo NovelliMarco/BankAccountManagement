@@ -1,0 +1,10 @@
+@use 'variables' as *;
+
+.icon {
+  height: 50px;
+  width: 50px;
+  background-color: $primary-color-dark;
+  border-radius: 50%;
+  color: $text-light;
+  border: 1px solid #ecf0f14a;
+}

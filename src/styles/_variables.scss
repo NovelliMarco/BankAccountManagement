@@ -2,6 +2,7 @@
 $sidebar-width: 280px;
 $sidebar-collapsed-width: 70px;
 $primary-color: rgb(0, 66, 136);
+$primary-color-dark: rgb(26, 40, 49);
 $primary-color-light: rgb(0, 85, 175);
 $dark-bg: #2c3e50;
 $darker-bg: #233140;
@@ -10,3 +11,17 @@ $text-muted: #bdc3c7;
 $hover-bg: rgba(255, 255, 255, 0.1);
 $active-bg: rgba(0, 50, 104, 0.2);
 $transition-duration: 0.5s;
+
+.text-primary {
+  color: $primary-color !important;
+}
+
+.btn-primary {
+  background-color: $primary-color-dark !important;
+  border-color: $primary-color-dark !important;
+
+  &:hover {
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
+  }
+}

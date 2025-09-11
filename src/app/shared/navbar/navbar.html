@@ -19,12 +19,9 @@
     <!-- User Profile Section -->
     <div class="user-profile" *ngIf="!isCollapsed">
       <div class="row align-items-center">
-        <div class="col-auto icon text-center align-content-center">
-          <i class="fas fa-user"></i>
-        </div>
+        <app-rounded-icon icon="user" class="col-auto p-0"></app-rounded-icon>
         <div class="col-auto user-info">
           <h5 class="user-name m-0">{{ user.name }} {{ user.surname }}</h5>
-          <!-- <div class="user-role text-secondary">Administrator</div> -->
         </div>
       </div>
     </div>

@@ -3,10 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { User } from '../../models/user';
+import { RoundedIcon } from '../rounded-icon/rounded-icon';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive, FontAwesomeModule, CommonModule],
+  imports: [RouterLink, RouterLinkActive, FontAwesomeModule, CommonModule, RoundedIcon],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
 })

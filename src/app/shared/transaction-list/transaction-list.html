@@ -1,0 +1,51 @@
+<!-- Movimenti -->
+<div class="row">
+  <div class="mb-4">
+    <div class="card shadow-sm">
+      <div class="card-header">Lista Movimenti</div>
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let t of transactions; index as index" class="list-group-item">
+          <div
+            data-bs-toggle="collapse"
+            aria-expanded="false"
+            [attr.data-bs-target]="`#transactionCollapse_${index}`"
+            [attr.aria-controls]="`transactionCollapse_${index}`"
+            role="button"
+          >
+            <div class="d-flex justify-content-between align-items-end">
+              <div class="row p-0 m-0 align-items-center">
+                <div class="col-auto p-0">
+                  <app-rounded-icon [icon]="getIcon(t.type.id)"></app-rounded-icon>
+                </div>
+                <div class="col-auto align-items-center">
+                  <div class="row">
+                    <small class="text-muted">
+                      {{ t.date }}
+                    </small>
+                  </div>
+                  <span>
+                    {{ t.type.description }}
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <span [ngClass]="{ 'text-primary': t.amount > 0 }">
+                  {{ t.amount | currency : 'EUR' }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row collapse text-muted" [id]="`transactionCollapse_${index}`">
+            <div>{{ t.reason }}</div>
+          </div>
+        </li>
+
+        <li *ngIf="transactions.length == 0" class="list-group-item d-flex justify-content-between">
+          <small class="text-muted">Nessuna transazione trovata</small>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
