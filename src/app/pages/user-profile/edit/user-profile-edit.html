@@ -1,0 +1,77 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h4>Modifica Profilo Utente</h4>
+    </div>
+    <div class="card-body">
+
+      <h5 class="mb-3 border-bottom pb-2">Dati Personali</h5>
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" [(ngModel)]="user.nome">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Cognome</label>
+          <input type="text" class="form-control" [(ngModel)]="user.cognome">
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <label class="form-label">Professione</label>
+          <input type="text" class="form-control" [(ngModel)]="user.professione">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Codice Fiscale</label>
+          <input type="text" class="form-control" [(ngModel)]="user.codiceFiscale">
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <label class="form-label">Residenza</label>
+          <input type="text" class="form-control" [(ngModel)]="user.residenza">
+        </div>
+      </div>
+
+      <h5 class="mt-4 mb-3 border-bottom pb-2">Recapiti</h5>
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" [(ngModel)]="user.email">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Telefono</label>
+          <input type="text" class="form-control" [(ngModel)]="user.telefono">
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <label class="form-label">Tipo di Conto</label>
+          <input type="text" class="form-control" [(ngModel)]="user.conto">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">IBAN</label>
+          <input type="text" class="form-control" [(ngModel)]="user.iban">
+        </div>
+      </div>
+
+      <h5 class="mt-4 mb-3 border-bottom pb-2">Documenti</h5>
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <label class="form-label">Documento</label>
+          <input type="text" class="form-control" [(ngModel)]="user.documento">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Numero Documento</label>
+          <input type="text" class="form-control" [(ngModel)]="user.numeroDocumento">
+        </div>
+      </div>
+
+      <div class="mt-4 text-end">
+        <button class="btn btn-success me-2" (click)="save()">Salva</button>
+        <button class="btn btn-secondary" (click)="close()">Chiudi</button>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import { Router } from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 interface User {
   nome: string;
@@ -16,13 +17,14 @@ interface User {
 }
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.html',
-  imports: [    RouterLink  ],
-  styleUrls: ['./user-profile.scss'],
-  standalone:true
+  selector: 'app-user-profile-edit',
+  templateUrl: './user-profile-edit.html',
+  imports: [
+    FormsModule
+  ],
+  styleUrls: ['./user-profile-edit.scss']
 })
-export class UserProfile {
+export class UserProfileEdit {
   user: User = {
     nome: 'Marco',
     cognome: 'Rossi',
@@ -36,4 +38,16 @@ export class UserProfile {
     documento: 'Carta d\'Identità',
     numeroDocumento: 'AB1234567'
   };
+
+  constructor(private router: Router) {}
+
+  save() {
+    // Qui puoi aggiungere chiamata a API per salvare i dati
+    this.user = this.user;
+    this.router.navigate(['/my-profile']);
+  }
+
+  close() {
+    this.router.navigate(['/my-profile']);
+  }
 }
