@@ -1,0 +1,33 @@
+<!-- src/app/components/transazioni/transazioni.component.html -->
+<div class="container mt-4">
+  <h2 class="mb-3">Storico Transazioni</h2>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th>Data</th>
+        <th>Descrizione</th>
+        <th>Tipo</th>
+        <th>Importo (€)</th>
+        <th>Saldo (€)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let t of transazioni">
+        <td>{{ t.data }}</td>
+        <td>{{ t.descrizione }}</td>
+        <td>
+            <span [ngClass]="{'text-success': t.tipo === 'Entrata', 'text-danger': t.tipo === 'Uscita'}">
+              {{ t.tipo }}
+            </span>
+        </td>
+        <td [ngClass]="{'text-success': t.importo > 0, 'text-danger': t.importo < 0}">
+          {{ t.importo | number:'1.2-2' }}
+        </td>
+        <td>{{ t.saldo | number:'1.2-2' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
