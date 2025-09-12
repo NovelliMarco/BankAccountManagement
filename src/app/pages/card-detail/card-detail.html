@@ -1,57 +1,35 @@
-<div class="container mt-5">
+<div class="container">
   <div class="card shadow-sm">
-    <div class="card-header bg-primary text-white">
+    <div class="card-header bg-primary-dark text-white">
       <h4>Dettaglio Carta</h4>
     </div>
     <div class="card-body">
       <div class="row mb-3">
         <div class="col-md-6">
           <label class="form-label">Numero Carta</label>
-          <input type="text" class="form-control" [value]="carta.numero" readonly>
+          <input type="text" class="form-control" [value]="carta.numero" readonly />
         </div>
         <div class="col-md-3">
           <label class="form-label">Scadenza</label>
-          <input type="text" class="form-control" [value]="carta.scadenza" readonly>
+          <input type="text" class="form-control" [value]="carta.scadenza" readonly />
         </div>
         <div class="col-md-3">
           <label class="form-label">Saldo</label>
-          <input type="text" class="form-control" [value]="carta.saldo | currency:'EUR'" readonly>
+          <input
+            type="text"
+            class="form-control"
+            [value]="carta.saldo | currency : 'EUR'"
+            readonly
+          />
         </div>
       </div>
 
-      <div class="mb-3">
+      <div>
         <button class="btn btn-warning me-2" (click)="toggleBlocca()">
           {{ carta.bloccata ? 'Sblocca Carta' : 'Blocca Carta' }}
         </button>
-        <button class="btn btn-secondary me-2" (click)="apriModale()">
-          Imposta Limite
-        </button>
-        <button class="btn btn-info" (click)="mostraTransazioni()">
-          Mostra Transazioni
-        </button>
-      </div>
-
-
-      <div *ngIf="transazioni.length > 0" class="mt-4">
-        <h5>Transazioni Recenti</h5>
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>Data</th>
-            <th>Descrizione</th>
-            <th>Importo</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let t of transazioni">
-            <td>{{ t.data | date:'shortDate' }}</td>
-            <td>{{ t.descrizione }}</td>
-            <td [ngClass]="{'text-danger': t.importo < 0, 'text-success': t.importo > 0}">
-              {{ t.importo | currency:'EUR' }}
-            </td>
-          </tr>
-          </tbody>
-        </table>
+        <button class="btn btn-secondary me-2">Imposta Limite</button>
+        <button class="btn btn-primary" [routerLink]="['transactions']">Mostra Transazioni</button>
       </div>
     </div>
   </div>

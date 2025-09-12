@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 interface User {
   nome: string;
@@ -19,10 +20,8 @@ interface User {
 @Component({
   selector: 'app-user-profile-edit',
   templateUrl: './user-profile-edit.html',
-  imports: [
-    FormsModule
-  ],
-  styleUrls: ['./user-profile-edit.scss']
+  imports: [FormsModule, CommonModule],
+  styleUrls: ['./user-profile-edit.scss'],
 })
 export class UserProfileEdit {
   user: User = {
@@ -35,8 +34,8 @@ export class UserProfileEdit {
     professione: 'Ingegnere Software',
     codiceFiscale: 'RSSMRC85M01H501X',
     residenza: 'Via Roma 10, 00100 Roma, Italia',
-    documento: 'Carta d\'Identità',
-    numeroDocumento: 'AB1234567'
+    documento: "Carta d'Identità",
+    numeroDocumento: 'AB1234567',
   };
 
   constructor(private router: Router) {}

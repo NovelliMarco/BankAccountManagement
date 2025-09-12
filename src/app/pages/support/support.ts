@@ -1,13 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-support',
   templateUrl: './support.html',
-  imports: [
-    ReactiveFormsModule
-  ],
-  styleUrls: ['./support.scss']
+  imports: [ReactiveFormsModule, CommonModule],
+  styleUrls: ['./support.scss'],
 })
 export class Support {
   supportForm: FormGroup;
@@ -18,7 +17,7 @@ export class Support {
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       oggetto: ['', Validators.required],
-      messaggio: ['', Validators.required]
+      messaggio: ['', Validators.required],
     });
   }
 

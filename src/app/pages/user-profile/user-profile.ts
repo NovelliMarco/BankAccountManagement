@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 interface User {
   nome: string;
@@ -18,9 +19,9 @@ interface User {
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.html',
-  imports: [    RouterLink  ],
+  imports: [RouterLink, CommonModule],
   styleUrls: ['./user-profile.scss'],
-  standalone:true
+  standalone: true,
 })
 export class UserProfile {
   user: User = {
@@ -33,7 +34,7 @@ export class UserProfile {
     professione: 'Ingegnere Software',
     codiceFiscale: 'RSSMRC85M01H501X',
     residenza: 'Via Roma 10, 00100 Roma, Italia',
-    documento: 'Carta d\'Identità',
-    numeroDocumento: 'AB1234567'
+    documento: "Carta d'Identità",
+    numeroDocumento: 'AB1234567',
   };
 }

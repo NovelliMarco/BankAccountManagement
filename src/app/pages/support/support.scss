@@ -1,4 +1,7 @@
-h1, h2 {
+@use 'variables' as *;
+
+h1,
+h2 {
   color: #0d6efd;
 }
 

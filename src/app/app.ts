@@ -17,14 +17,11 @@ export class App implements OnInit {
   constructor(private authService: Auth, private router: Router) {}
 
   ngOnInit(): void {
-    // this.authService.login().subscribe({
-    //   next: () => this.router.navigate(['/home']),
-    //   error: () => this.router.navigate(['/home']), // anche in caso di fallback
-    // });
+    this.user = this.authService.getLoggedUser();
   }
 
   private userEffect = effect(() => {
-    this.user = this.authService.loggedUser();
+    if (!this.user) this.user = this.authService.loggedUser();
     untracked(() => {
       if (!this.user) {
         this.router.navigate(['login']);

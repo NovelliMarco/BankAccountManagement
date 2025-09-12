@@ -1,5 +1,19 @@
+@use 'variables' as *;
+
 .card {
-  max-width: 800px;
-  margin: auto;
-  border-radius: 10px;
+  border-radius: 0.5rem;
+}
+.btn-block {
+  width: 100%;
+}
+
+.collapsable {
+  opacity: 0;
+  max-height: 0;
+  transition: all $transition-duration ease-in-out;
+}
+
+.collapsable.show {
+  opacity: 1;
+  max-height: 500px;
 }

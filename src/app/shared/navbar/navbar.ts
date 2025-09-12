@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { User } from '../../models/user';
 import { RoundedIcon } from '../rounded-icon/rounded-icon';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -38,7 +39,7 @@ export class Navbar implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private authService: Auth, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -52,5 +53,10 @@ export class Navbar implements OnInit {
 
   toggleSubmenu(item: any): void {
     item.showSubmenu = !item.showSubmenu;
+  }
+
+  logout() {
+    this.authService.logout();
+    window.location.reload();
   }
 }

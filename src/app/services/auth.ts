@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Signal, signal, WritableSignal } from '@angular/core';
+import { effect, Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user';
 import { tap } from 'rxjs/operators';
@@ -21,6 +21,15 @@ export class Auth {
   private setUser(user: User | null) {
     this._loggedUser.set(user);
   }
+  loginEffect = effect(() => {
+    if (this.loggedUser()) sessionStorage.setItem('loggedUser', JSON.stringify(this.loggedUser()));
+  });
+
+  getLoggedUser(): User | null {
+    let sessionUser = sessionStorage.getItem('loggedUser');
+    if (sessionUser) return JSON.parse(sessionUser);
+    else return this.loggedUser();
+  }
 
   login() {
     return this.http.post<User>(`${environment.apiUrl}/login`, {}).pipe(
@@ -29,5 +38,10 @@ export class Auth {
         error: () => this.setUser(this.mockedUser),
       })
     );
+  }
+
+  logout() {
+    sessionStorage.removeItem('loggedUser');
+    this.setUser(null);
   }
 }

@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import {Location, NgClass} from '@angular/common'; // ← Import necessario
+import { CommonModule, Location } from '@angular/common'; // ← Import necessario
 
 @Component({
   selector: 'card-detail-block',
   templateUrl: './card-detail-block.html',
-  imports: [
-    NgClass
-  ],
-  styleUrls: ['./card-detail-block.scss']
+  imports: [CommonModule],
+  styleUrls: ['./card-detail-block.scss'],
 })
 export class BloccaCarta {
   carta = { bloccata: false };

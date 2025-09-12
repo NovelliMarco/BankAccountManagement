@@ -9,6 +9,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { Auth } from './services/auth';
 import { Account } from './services/account';
+import { Card } from './services/card';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     Auth,
     Account,
+    Card,
   ],
 };

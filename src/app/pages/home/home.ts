@@ -23,7 +23,7 @@ export class Home implements OnInit {
   user!: User | null;
 
   constructor(private authService: Auth, private accountService: Account) {
-    this.user = this.authService.loggedUser();
+    this.user = this.authService.getLoggedUser();
   }
 
   ngOnInit(): void {

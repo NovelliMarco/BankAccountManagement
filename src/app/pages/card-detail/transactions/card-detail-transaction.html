@@ -1,33 +1,39 @@
-<!-- src/app/components/transazioni/transazioni.component.html -->
-<div class="container mt-4">
-  <h2 class="mb-3">Storico Transazioni</h2>
+<h1 class="mb-4 text-primary">Transazioni Carta</h1>
 
-  <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead class="table-dark">
-      <tr>
-        <th>Data</th>
-        <th>Descrizione</th>
-        <th>Tipo</th>
-        <th>Importo (€)</th>
-        <th>Saldo (€)</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let t of transazioni">
-        <td>{{ t.data }}</td>
-        <td>{{ t.descrizione }}</td>
-        <td>
-            <span [ngClass]="{'text-success': t.tipo === 'Entrata', 'text-danger': t.tipo === 'Uscita'}">
-              {{ t.tipo }}
-            </span>
-        </td>
-        <td [ngClass]="{'text-success': t.importo > 0, 'text-danger': t.importo < 0}">
-          {{ t.importo | number:'1.2-2' }}
-        </td>
-        <td>{{ t.saldo | number:'1.2-2' }}</td>
-      </tr>
-      </tbody>
-    </table>
+<!-- Ricerca -->
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header" (click)="toggleFilters()" role="button">
+        <i class="fas" [ngClass]="showFilters ? 'fa-caret-down' : 'fa-caret-right'"></i>
+        Ricerca movimenti
+      </div>
+      <div class="collapsable" [class.show]="showFilters">
+        <div class="card-body">
+          <div class="row align-items-end">
+            <!-- Data Da -->
+            <div class="col-md-4">
+              <label for="startDate" class="form-label">Data da</label>
+              <input type="date" id="startDate" class="form-control" />
+            </div>
+
+            <!-- Data A -->
+            <div class="col-md-4">
+              <label for="endDate" class="form-label">Data a</label>
+              <input type="date" id="endDate" class="form-control" />
+            </div>
+
+            <!-- Pulsante Cerca -->
+            <div class="col-md-4">
+              <button class="btn btn-primary w-100">Cerca</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<app-transaction-list [transactions]="operazioni"></app-transaction-list>
+
+<button class="btn btn-secondary" (click)="goBack()">Indietro</button>

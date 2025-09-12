@@ -3,13 +3,13 @@
   <app-navbar [user]="user"></app-navbar>
 
   <main class="main-content">
-    <div class="container-fluid p-4">
+    <div class="container container-fluid p-4">
       <router-outlet></router-outlet>
     </div>
   </main>
 </div>
 <main *ngIf="!user">
-  <div class="container-fluid p-4">
+  <div class="container container-fluid">
     <router-outlet></router-outlet>
   </div>
 </main>
