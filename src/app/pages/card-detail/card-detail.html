@@ -25,11 +25,121 @@
       </div>
 
       <div>
-        <button class="btn btn-warning me-2" (click)="toggleBlocca()">
+        <button
+          class="btn btn-warning me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#blockCardModal"
+        >
           {{ carta.bloccata ? 'Sblocca Carta' : 'Blocca Carta' }}
         </button>
-        <button class="btn btn-secondary me-2">Imposta Limite</button>
+        <button
+          class="btn btn-secondary me-2"
+          data-bs-toggle="modal"
+          data-bs-target="#cardLimitModal"
+        >
+          Imposta Limiti
+        </button>
         <button class="btn btn-primary" [routerLink]="['transactions']">Mostra Transazioni</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block Card Modal -->
+<div
+  class="modal fade"
+  id="blockCardModal"
+  tabindex="-1"
+  aria-labelledby="blockCardModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="blockCardModalLabel">
+          {{ carta.bloccata ? 'Sblocca Carta' : 'Blocca Carta' }}
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="fs-5">La tua carta attualmente è:</p>
+        <h3 [ngClass]="{ 'text-danger': carta.bloccata, 'text-success': !carta.bloccata }">
+          {{ carta.bloccata ? 'Bloccata' : 'Attiva' }}
+        </h3>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" (click)="toggleBlocca()">
+          {{ carta.bloccata ? 'Sblocca Carta' : 'Blocca Carta' }}
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card Limit Modal -->
+<div
+  class="modal fade"
+  id="cardLimitModal"
+  tabindex="-1"
+  aria-labelledby="cardLimitModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="cardLimitModalLabel">Imposta Limiti Carta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <form #limiteForm="ngForm">
+          <div class="mb-3">
+            <label for="giornaliero" class="form-label">Limite Giornaliero</label>
+            <input
+              type="number"
+              id="giornaliero"
+              class="form-control"
+              [(ngModel)]="carta.limiti.giornaliero"
+              name="giornaliero"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="mensile" class="form-label">Limite Mensile</label>
+            <input
+              type="number"
+              id="mensile"
+              class="form-control"
+              [(ngModel)]="carta.limiti.mensile"
+              name="mensile"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="annuale" class="form-label">Limite Annuale</label>
+            <input
+              type="number"
+              id="annuale"
+              class="form-control"
+              [(ngModel)]="carta.limiti.annuale"
+              name="annuale"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="saveLimits()"
+          data-bs-dismiss="modal"
+        >
+          Salva
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
       </div>
     </div>
   </div>

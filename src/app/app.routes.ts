@@ -28,20 +28,6 @@ export const routes: Routes = [
     title: `${siteName} Card`,
   },
   {
-    path: 'card-detail-block',
-    loadComponent: () =>
-      import('./pages/card-detail/block/card-detail-block').then((m) => m.BloccaCarta),
-    pathMatch: 'full',
-    title: `${siteName} Blocca Carta`,
-  },
-  {
-    path: 'card-detail-limit',
-    loadComponent: () =>
-      import('./pages/card-detail/limit/card-detail-limit').then((m) => m.ImpostaLimite),
-    pathMatch: 'full',
-    title: `${siteName} Imposta Limite`,
-  },
-  {
     path: 'my-card/transactions',
     loadComponent: () =>
       import('./pages/card-detail/transactions/card-detail-transaction').then((m) => m.Transazioni),
